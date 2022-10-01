@@ -1,0 +1,16 @@
+\documentclass[border=0.5cm,preview]{standalone}
+
+\usepackage{amsmath}
+\usepackage[arrowdel]{physics}
+\usepackage{siunitx}
+
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+\begin{document}
+  
+\begin{align*}
+x(t) &= x_0 + v_{0x}t \\
+y(t) &= y_0 + v_{0y}t + \frac{1}{2}at^2
+\end{align*}
+
+\end{document}
