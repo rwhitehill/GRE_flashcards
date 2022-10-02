@@ -26,6 +26,8 @@ if __name__ == '__main__':
 
             res = subprocess.run('open %s'%('question.pdf'),shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 
+            input('Press Enter to show answer...')
+
             answer_path = path+'answer'
             if not os.path.isfile('answer.pdf'):
                 res = subprocess.run('pdflatex %s'%('answer.tex'),shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
@@ -36,10 +38,16 @@ if __name__ == '__main__':
             
             total_count += 1
             user_input = input('Card %d: Correct? Enter yes or no \n\t'%total_count)
-            if user_input == 'yes':
-                correct_count += 1
-                if _ != 3:
-                    os.rename(path,cwd+'/storage'+str(_+1)+'/'+card)
+            while True:
+                if user_input == 'yes':
+                    correct_count += 1
+                    if _ != 3:
+                        os.rename(path,cwd+'/storage'+str(_+1)+'/'+card)
+                    break
+                elif user_input == 'no':
+                    if _ != 1:
+                        os.rename(path,cwd+'/storage'+str(_-1)+'/'+card)
+                    break
 
     print('\n%d/%d =  %.2f'%(correct_count,total_count,correct_count/total_count))
             
