@@ -2,6 +2,7 @@
 
 import os
 import subprocess
+import random
 
 
 if __name__ == '__main__':
@@ -11,12 +12,15 @@ if __name__ == '__main__':
     correct_count = 0
     total_count   = 0
    
-    for _ in [3,2,1]:
+    for _ in [1]:
         storage = cwd + '/storage'+str(_)
         
         cards = os.listdir(storage)
+        random.shuffle(cards)
 
         for card in cards:
+            if card == 'temp_card':
+                continue
             path = storage+'/'+card
             os.chdir(path)
             if not os.path.isfile('question.pdf'):
@@ -37,8 +41,8 @@ if __name__ == '__main__':
             res = subprocess.run('open %s'%('answer.pdf'),shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
             
             total_count += 1
-            user_input = input('Card %d: Correct? Enter yes or no \n\t'%total_count)
             while True:
+                user_input = input('Card %d: Correct? Enter yes or no \n\t'%total_count)
                 if user_input == 'yes':
                     correct_count += 1
                     if _ != 3:
@@ -49,7 +53,7 @@ if __name__ == '__main__':
                         os.rename(path,cwd+'/storage'+str(_-1)+'/'+card)
                     break
 
-    print('\n%d/%d =  %.2f'%(correct_count,total_count,correct_count/total_count))
+    print('\n%d/%d =  %.2f%%'%(correct_count,total_count,100*correct_count/total_count))
             
         
 
