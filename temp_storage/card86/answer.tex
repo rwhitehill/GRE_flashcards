@@ -1,0 +1,24 @@
+\input{../../preamble.tex}
+\begin{document}
+\vspace*{\fill}
+\centering
+
+\begin{align*}
+   F(\epsilon_{i}) = 
+   \begin{cases}
+       \frac{1}{e^{(\epsilon_{i} - \mu)/k_{B}T} + 1} & \mbox{Fermi-Dirac} \\
+       \frac{1}{e^{(\epsilon_{i} - \mu)/k_{B}T} - 1} & \mbox{Bose-Einstein}
+   \end{cases}
+\end{align*}
+
+\begin{align*}
+   \langle N \rangle = 
+   \begin{cases}
+       \sum_{i} g(\epsilon_{e})F(\epsilon_{i}) & \mbox{Discrete} \\
+       \int \dd{\epsilon} \rho(\epsilon) F(\epsilon) & \mbox{Continuous}
+   \end{cases}
+\end{align*}
+
+\centering
+\vspace*{\fill}
+\end{document}

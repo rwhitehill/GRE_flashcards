@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
             res = subprocess.run('open %s'%('question.pdf'),shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 
-            input('Press Enter to show answer...')
+            #input('Press Enter to show answer...')
 
             answer_path = path+'answer'
             if not os.path.isfile('answer.pdf'):
