@@ -21,6 +21,7 @@ if __name__ == '__main__':
         for card in cards:
             if card == 'temp_card':
                 continue
+            print(card)
             path = storage+'/'+card
             os.chdir(path)
             if not os.path.isfile('question.pdf'):
@@ -44,9 +45,9 @@ if __name__ == '__main__':
             while True:
                 user_input = input('Card %d: Correct? Enter yes or no \n\t'%total_count)
                 if user_input == 'yes':
-                    correct_count += 1
                     if _ != 3:
                         os.rename(path,cwd+'/storage'+str(_+1)+'/'+card)
+                    correct_count += 1
                     break
                 elif user_input == 'no':
                     if _ != 1:
