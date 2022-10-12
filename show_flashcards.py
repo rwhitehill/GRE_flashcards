@@ -12,7 +12,7 @@ if __name__ == '__main__':
     correct_count = 0
     total_count   = 0
    
-    for _ in [1]:
+    for _ in [2]:
         storage = cwd + '/storage'+str(_)
         
         cards = os.listdir(storage)
@@ -52,6 +52,8 @@ if __name__ == '__main__':
                 elif user_input == 'no':
                     if _ != 1:
                         os.rename(path,cwd+'/storage'+str(_-1)+'/'+card)
+                    break
+                elif user_input == 'pass':
                     break
 
     print('\n%d/%d =  %.2f%%'%(correct_count,total_count,100*correct_count/total_count))
